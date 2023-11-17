@@ -45,5 +45,10 @@ public class DigitalVideoDisc {
 		this.length = length;
 	}
 	
+
+	public String toString() {
+        return String.format("%s - %s - %s - %d: %.2f $", getTitle(), getCategory(), getDirector(), getLength(), getCost());
+    }
+	
 }
 
