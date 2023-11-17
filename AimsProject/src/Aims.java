@@ -2,8 +2,6 @@
 public class Aims {
 	public static void main(String[] args) {
 		var anOrder = new Cart();
-		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19]; //Tao mang dvdList
-		
 		var dvd1 = new DigitalVideoDisc(
 				"The Lion King",
 				"Animation",
@@ -25,16 +23,27 @@ public class Aims {
 				92,
 				18.99f
 		);
-//Add DVD vao mang
-//		dvdList[0] = dvd1;
-//		dvdList[1] = dvd2;
-//		dvdList[2] = dvd3;
+		anOrder.addDigitalVideoDisc(dvd1);
+		anOrder.addDigitalVideoDisc(dvd2);
+		anOrder.addDigitalVideoDisc(dvd3);
 		
-		anOrder.addDigitalVideoDisc(dvd1,dvd2);
-		
-		System.out.println("Total cost to be paid: ");
-		System.out.println(anOrder.totalCost());
+		System.out.println("Total Cost is: " + anOrder.totalCost());
+
+		anOrder.removeDigitalVideoDisc(dvd2);
+		System.out.println(
+				"Total cost after removing dvd2 is: " +
+						anOrder.totalCost()
+		);
+		anOrder.removeDigitalVideoDisc(dvd1);
+		System.out.println(
+				"Total cost after removing dvd1 is: " +
+						anOrder.totalCost()
+		);
+		anOrder.removeDigitalVideoDisc(dvd3);
+		System.out.println(
+				"Total cost after removing dvd3 is: " +
+						anOrder.totalCost()
+		);
+		anOrder.removeDigitalVideoDisc(dvd2);
 	}
 }
-		
-		

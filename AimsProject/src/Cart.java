@@ -25,26 +25,6 @@ public class Cart {
 		qtyOrdered++;
 		System.out.println("Them thanh cong: " + disc.getTitle());
 	}
-	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
-		
-			for (DigitalVideoDisc disc : dvdList) {
-				addDigitalVideoDisc(disc);
-			}
-	}
-	
-	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		if (dvd1.getTitle().equals(dvd2.getTitle())) {
-			System.out.println("Khong the them 2 dia giong nhau.");
-			return;
-		}
-		if (qtyOrdered + 2 > MAX_NUMBERS_ORDERED) {
-			System.out.println("Gio hang da day, khong the them.");
-			return;
-		}
-		addDigitalVideoDisc(dvd1);
-		addDigitalVideoDisc(dvd2);
-	}
-	
 //remove DVD
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (disc == null)
