@@ -3,7 +3,7 @@ public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	public DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	public int qtyOrdered;
-
+	private static int nextId = 1;
 	public Cart() {
 		this.qtyOrdered = 0;
 	}
@@ -21,6 +21,7 @@ public class Cart {
 				return;
 			}
 		}
+		disc.setId(nextId++);
 		itemsOrdered[qtyOrdered] = disc;
 		qtyOrdered++;
 		System.out.println("Them thanh cong: " + disc.getTitle());
@@ -75,4 +76,30 @@ public class Cart {
 		System.out.println("Total cost: " + totalCost());
 		System.out.println("***************************************************");
 	}
+	public void searchCart(int id){
+    	int check = 0;
+    	for(int i = 0; i < qtyOrdered; i++) {
+    		if(itemsOrdered[i].isMatch(id)) {
+    			check = 1;
+    			System.out.println(itemsOrdered[i].toString());
+    			break;
+    		}
+    	}
+    	if(check == 0) {
+    		System.out.println("Khong tim thay");
+    	}
+    }
+    public void searchCart(String title){
+    	int check = 0;
+    	for(int i = 0; i < qtyOrdered; i++) {
+    		if(itemsOrdered[i].isMatch(title)) {
+    			check = 1;
+    			System.out.println(itemsOrdered[i].toString());
+    			break;
+    		}
+    	}
+    	if(check == 0) {
+    		System.out.println("Khong tim thay");
+    	}
+    }
 }

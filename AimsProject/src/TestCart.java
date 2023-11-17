@@ -28,5 +28,8 @@ public class TestCart {
 		anOrder.addDigitalVideoDisc(dvd3);
 		
 	    anOrder.printCart();
+	    anOrder.searchCart("A");
+        anOrder.searchCart(1);
+	    
 	}
 }
