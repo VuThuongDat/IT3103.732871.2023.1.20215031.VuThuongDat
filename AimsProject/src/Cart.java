@@ -11,19 +11,25 @@ public class Cart {
 		if (disc == null)
 			return;
 		if (qtyOrdered == MAX_NUMBERS_ORDERED) {
-			System.out.println("The cart is almost full");
+			System.out.println("Gio hang da day");
 			return;
+		}
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].equals(disc)) {
+				System.out.println("Khong the them vi " + disc.getTitle() + " da co trong gio hang!!");
+				return;
+			}
 		}
 		itemsOrdered[qtyOrdered] = disc;
 		qtyOrdered++;
-		System.out.println("The disc has been added");
+		System.out.println("Them thanh cong " + disc.getTitle());
 	}
 //remove DVD
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (disc == null)
 			return;
 		if (qtyOrdered == 0) {
-			System.out.println("The cart is  empty");
+			System.out.println("Gio hang trong");
 			return;
 		}
 
@@ -39,9 +45,9 @@ public class Cart {
 		}
 
 		if (!found)
-			System.out.println("The disc was not in the cart");
+			System.out.println("Khong tim thay " + disc.getTitle());
 		else {
-			System.out.println("The disc has been removed");
+			System.out.println("Da xoa "+ disc.getTitle());
 			qtyOrdered--;
 		}
 	}

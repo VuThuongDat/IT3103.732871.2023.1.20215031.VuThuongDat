@@ -25,21 +25,21 @@ public class Aims {
 		anOrder.addDigitalVideoDisc(dvd2);
 		anOrder.addDigitalVideoDisc(dvd3);
 
-		System.out.println("Total Cost is: " + anOrder.totalCost());
+		System.out.println("Tong so tien la: " + anOrder.totalCost());
 
 		anOrder.removeDigitalVideoDisc(dvd2);
 		System.out.println(
-				"Total cost after removing dvd2 is: " +
+				"Tong so tien sau khi xoa dvd2 la: " +
 						anOrder.totalCost()
 		);
 		anOrder.removeDigitalVideoDisc(dvd1);
 		System.out.println(
-				"Total cost after removing dvd1 is: " +
+				"Tong so tien sau khi xoa dvd1 la: " +
 						anOrder.totalCost()
 		);
 		anOrder.removeDigitalVideoDisc(dvd3);
 		System.out.println(
-				"Total cost after removing dvd3 is: " +
+				"Tong so tien sau khi xoa dvd3 la: " +
 						anOrder.totalCost()
 		);
 		anOrder.removeDigitalVideoDisc(dvd2);
