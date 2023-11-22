@@ -37,7 +37,6 @@ public class Aims {
 		
 		anOrder.addDigitalVideoDisc(dvdList);
 		anOrder.addDigitalVideoDisc(dvd3, dvd4);
-		System.out.println("Tong so tien phai tra la ");
-		System.out.println(anOrder.totalCost());
+		anOrder.printCart();
 	}
 }

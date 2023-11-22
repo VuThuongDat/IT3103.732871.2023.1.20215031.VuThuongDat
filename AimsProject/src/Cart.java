@@ -72,4 +72,19 @@ public class Cart {
 		}
 		return sum;
 	}
+	
+	public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        if (qtyOrdered != 0) {
+            for (int i = 0; i < qtyOrdered; ++i) {
+                System.out.println((i + 1) + ". DVD " + itemsOrdered[i].toString());
+            }
+        } else {
+            System.out.println("");
+        }
+
+        System.out.println("Total cost: " + totalCost());
+        System.out.println("***************************************************");
+    }
 }
