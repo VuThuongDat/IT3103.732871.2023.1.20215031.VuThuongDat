@@ -1,6 +1,7 @@
 public class Aims {
 	public static void main(String[] args) {
 		var anOrder = new Cart();
+		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19];
 		var dvd1 = new DigitalVideoDisc(
 				"The Lion King",
 				"Animation",
@@ -18,30 +19,24 @@ public class Aims {
 		var dvd3 = new DigitalVideoDisc(
 				"Aladdin",
 				"Animation",
+				"Piaka",
+				92,
 				18.99f
 		);
-
-		anOrder.addDigitalVideoDisc(dvd1);
-		anOrder.addDigitalVideoDisc(dvd2);
-		anOrder.addDigitalVideoDisc(dvd3);
-
-		System.out.println("Tong so tien la: " + anOrder.totalCost());
-
-		anOrder.removeDigitalVideoDisc(dvd2);
-		System.out.println(
-				"Tong so tien sau khi xoa dvd2 la: " +
-						anOrder.totalCost()
+		var dvd4 = new DigitalVideoDisc(
+				"My Destiny",
+				"Love",
+				"Home Seckia",
+				97,
+				24.35f
 		);
-		anOrder.removeDigitalVideoDisc(dvd1);
-		System.out.println(
-				"Tong so tien sau khi xoa dvd1 la: " +
-						anOrder.totalCost()
-		);
-		anOrder.removeDigitalVideoDisc(dvd3);
-		System.out.println(
-				"Tong so tien sau khi xoa dvd3 la: " +
-						anOrder.totalCost()
-		);
-		anOrder.removeDigitalVideoDisc(dvd2);
+		
+		dvdList[0] = dvd1;
+		dvdList[1] = dvd2;
+		
+		anOrder.addDigitalVideoDisc(dvdList);
+		anOrder.addDigitalVideoDisc(dvd3, dvd4);
+		System.out.println("Tong so tien phai tra la ");
+		System.out.println(anOrder.totalCost());
 	}
 }
