@@ -1,5 +1,5 @@
 //Vu Thuong Dat 20215031
-public class Aims {
+public class CartTest {
 	public static void main(String[] args) {
 		var anOrder = new Cart();
 		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19];
@@ -37,7 +37,9 @@ public class Aims {
 		
 		anOrder.addDigitalVideoDisc(dvdList);
 		anOrder.addDigitalVideoDisc(dvd3, dvd4);
-		System.out.println("Tong so tien phai tra la ");
-		System.out.println(anOrder.totalCost());
+		anOrder.printCart();
+		anOrder.searchCart(1);
+		anOrder.searchCart("A");
+		anOrder.searchCart(5);
 	}
 }
