@@ -49,5 +49,20 @@ public class DigitalVideoDisc {
 	public String toString() {
 		return String.format("%s - %s - %s - %d: %.2f $", getTitle(), getCategory(), getDirector(), getLength(), getCost());
 	}
+	
+	public boolean equals(DigitalVideoDisc disc) {
+		return this.getTitle().equals(disc.getTitle());
+	}
+	public boolean isMatch(int id) {
+ 		return this.id == id;
+ 	}
+	public boolean isMatch(String title) {
+		String[] tmp = title.split(" ", 0);
+		for (String x : tmp) {
+			if (getTitle().toLowerCase().contains(x.toLowerCase()))
+				return true;
+		}
+		return false;
+	}
 }
 	

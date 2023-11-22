@@ -26,16 +26,16 @@ public class Cart {
 		qtyOrdered++;
 		System.out.println("Them thanh cong " + disc.getTitle()+ " (ID: " + disc.getId() + ")");
 	}
-    public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
-        for (DigitalVideoDisc disc : dvdList) {
-            addDigitalVideoDisc(disc);
-        }
-    }
-    
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-    	addDigitalVideoDisc(dvd1);
-    	addDigitalVideoDisc(dvd2);
-    }
+	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+		for (DigitalVideoDisc disc : dvdList) {
+			addDigitalVideoDisc(disc);
+		}
+	}
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+		addDigitalVideoDisc(dvd1);
+		addDigitalVideoDisc(dvd2);
+	}
 //remove DVD
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (disc == null)
@@ -74,17 +74,46 @@ public class Cart {
 	}
 	
 	public void printCart() {
-        System.out.println("***********************CART***********************");
-        System.out.println("Ordered Items:");
-        if (qtyOrdered != 0) {
-            for (int i = 0; i < qtyOrdered; ++i) {
-                System.out.println((i + 1) + ". DVD " + itemsOrdered[i].toString());
-            }
-        } else {
-            System.out.println("");
-        }
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		if (qtyOrdered != 0) {
+			for (int i = 0; i < qtyOrdered; ++i) {
+				System.out.println((i + 1) + ". DVD " + itemsOrdered[i].toString());
+			}
+		} else {
+			System.out.println("");
+		}
 
-        System.out.println("Total cost: " + totalCost());
-        System.out.println("***************************************************");
-    }
+		System.out.println("Total cost: " + totalCost());
+		System.out.println("***************************************************");
+	}
+	
+	public void searchCart(int id){
+		int check = 0;
+		for(int i = 0; i < qtyOrdered; i++) {
+			if(itemsOrdered[i].isMatch(id)) {
+				check = 1;
+				System.out.println(itemsOrdered[i].toString());
+				break;
+			}
+		}
+		if(check == 0) {
+			System.out.println("Khong tim thay '"+ id +"'");
+		}
+	}
+	public void searchCart(String title){
+		int check = 0;
+		for(int i = 0; i < qtyOrdered; i++) {
+			if(itemsOrdered[i].isMatch(title)) {
+				check = 1;
+				System.out.println(itemsOrdered[i].toString());
+				break;
+			}
+		}
+		if(check == 0) {
+			System.out.println("Khong tim thay '"+title+"'");
+		}
+	}
 }
+
+	

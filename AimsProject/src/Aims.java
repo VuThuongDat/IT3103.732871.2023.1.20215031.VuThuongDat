@@ -38,5 +38,8 @@ public class Aims {
 		anOrder.addDigitalVideoDisc(dvdList);
 		anOrder.addDigitalVideoDisc(dvd3, dvd4);
 		anOrder.printCart();
+		anOrder.searchCart(1);
+		anOrder.searchCart("A");
+		anOrder.searchCart(5);
 	}
 }
