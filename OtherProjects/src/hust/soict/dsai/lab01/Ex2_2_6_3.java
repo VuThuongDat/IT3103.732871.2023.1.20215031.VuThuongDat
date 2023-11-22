@@ -1,6 +1,6 @@
 /*2.2.6.3-solve the second-degree equation with one variable
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import java.util.Scanner;
 public class Ex2_2_6_3 {
 	public static void main(String[] args) {

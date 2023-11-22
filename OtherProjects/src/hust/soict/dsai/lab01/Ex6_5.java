@@ -1,6 +1,6 @@
 /*6.5-Write a Java program to sort a numeric array, and calculate the sum and average value of array elements.
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import java.util.Arrays;
 public class Ex6_5 {
 	public static void main(String[] args) {

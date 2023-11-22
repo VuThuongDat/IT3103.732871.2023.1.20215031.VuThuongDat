@@ -1,8 +1,10 @@
 //Vu Thuong Dat 20215031
-public class Aims {
+package hust.soict.dsai.test.store;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.store.Store;
+public class StoreTest {
 	public static void main(String[] args) {
-		var anOrder = new Cart();
-		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19];
+		Store store = new Store(10);
 		var dvd1 = new DigitalVideoDisc(
 				"The Lion King",
 				"Animation",
@@ -32,12 +34,12 @@ public class Aims {
 				24.35f
 		);
 		
-		dvdList[0] = dvd1;
-		dvdList[1] = dvd2;
-		
-		anOrder.addDigitalVideoDisc(dvdList);
-		anOrder.addDigitalVideoDisc(dvd3, dvd4);
-		System.out.println("Tong so tien phai tra la ");
-		System.out.println(anOrder.totalCost());
+		store.addDVD(dvd1);
+		store.addDVD(dvd2);
+		store.addDVD(dvd3);
+
+		store.displayStore();
+		store.removeDVD(dvd2);
+		store.displayStore();
 	}
 }

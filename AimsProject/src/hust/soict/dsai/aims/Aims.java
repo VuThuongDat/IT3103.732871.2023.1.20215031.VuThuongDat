@@ -1,5 +1,8 @@
 //Vu Thuong Dat 20215031
-public class CartTest {
+package hust.soict.dsai.aims;
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+public class Aims {
 	public static void main(String[] args) {
 		var anOrder = new Cart();
 		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19];
@@ -37,9 +40,7 @@ public class CartTest {
 		
 		anOrder.addDigitalVideoDisc(dvdList);
 		anOrder.addDigitalVideoDisc(dvd3, dvd4);
-		anOrder.printCart();
-		anOrder.searchCart(1);
-		anOrder.searchCart("A");
-		anOrder.searchCart(5);
+		System.out.println("Tong so tien phai tra la ");
+		System.out.println(anOrder.totalCost());
 	}
 }

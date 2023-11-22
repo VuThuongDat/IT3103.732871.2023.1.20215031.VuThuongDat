@@ -1,6 +1,6 @@
 /*6.2-InputFromKeyboard
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import java.util.Scanner;
 public class Ex6_2_InputFromKeyboard {
 	public static void main(String args[]) {

@@ -1,6 +1,6 @@
 /*2.2.6.1-solve the first-degree equation (linear equation) with one variable
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 
 import java.util.Scanner;
 

@@ -1,7 +1,11 @@
 //Vu Thuong Dat 20215031
-public class StoreTest {
+package hust.soict.dsai.test.cart;
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+public class CartTest {
 	public static void main(String[] args) {
-		Store store = new Store(10);
+		var anOrder = new Cart();
+		DigitalVideoDisc[] dvdList = new DigitalVideoDisc[19];
 		var dvd1 = new DigitalVideoDisc(
 				"The Lion King",
 				"Animation",
@@ -31,12 +35,14 @@ public class StoreTest {
 				24.35f
 		);
 		
-		store.addDVD(dvd1);
-		store.addDVD(dvd2);
-		store.addDVD(dvd3);
-
-		store.displayStore();
-		store.removeDVD(dvd2);
-		store.displayStore();
+		dvdList[0] = dvd1;
+		dvdList[1] = dvd2;
+		
+		anOrder.addDigitalVideoDisc(dvdList);
+		anOrder.addDigitalVideoDisc(dvd3, dvd4);
+		anOrder.printCart();
+		anOrder.searchCart(1);
+		anOrder.searchCart("A");
+		anOrder.searchCart(5);
 	}
 }

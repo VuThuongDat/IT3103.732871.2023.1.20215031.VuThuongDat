@@ -1,6 +1,6 @@
 /*6.1-ChoosingOption
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import javax.swing.JOptionPane;
 public class Ex6_1_ChoosingOption{
 	public static void main(String[] args) {

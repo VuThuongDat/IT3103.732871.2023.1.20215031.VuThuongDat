@@ -1,6 +1,6 @@
 /*6.6-Write a Java program to add two matrices of the same size.
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 
 public class Ex6_6 {
 	public static void main(String[] args) {

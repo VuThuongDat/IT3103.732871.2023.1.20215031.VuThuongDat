@@ -1,6 +1,6 @@
 /*6.4-Write a program to display the number of days of a month
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import java.util.Scanner;
 public class Ex6_4 {
 	public static void main(String[] args) {

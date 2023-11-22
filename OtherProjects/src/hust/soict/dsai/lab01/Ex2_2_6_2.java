@@ -1,6 +1,6 @@
 /*2.2.6.2-solve the system of first-degree equations (linear system) with two variables
  * Vu Thuong Dat-20215031*/
-package lab01;
+package hust.soict.dsai.lab01;
 import java.util.Scanner;
 public class Ex2_2_6_2 {
 	public static void main(String[] args) {
