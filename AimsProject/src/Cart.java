@@ -3,7 +3,7 @@ public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	public DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	public int qtyOrdered;
-
+	private static int nextId = 1;
 	public Cart() {
 		this.qtyOrdered = 0;
 	}
@@ -21,9 +21,10 @@ public class Cart {
 				return;
 			}
 		}
+		disc.setId(nextId++);
 		itemsOrdered[qtyOrdered] = disc;
 		qtyOrdered++;
-		System.out.println("Them thanh cong " + disc.getTitle());
+		System.out.println("Them thanh cong " + disc.getTitle()+ " (ID: " + disc.getId() + ")");
 	}
     public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
         for (DigitalVideoDisc disc : dvdList) {

@@ -1,11 +1,17 @@
 //Vu Thuong Dat 20215031
 public class DigitalVideoDisc {
-
+	private int id;
 	private String title;
 	private String category;
 	private String director;
 	private int length;
 	private float cost;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
