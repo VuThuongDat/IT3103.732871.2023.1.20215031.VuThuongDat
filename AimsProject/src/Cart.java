@@ -1,3 +1,4 @@
+//Vu Thuong Dat 20215031
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	public DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];

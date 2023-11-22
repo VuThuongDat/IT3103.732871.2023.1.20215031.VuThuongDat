@@ -1,4 +1,4 @@
-
+//Vu Thuong Dat 20215031
 public class DigitalVideoDisc {
 
 	private String title;
@@ -8,6 +8,9 @@ public class DigitalVideoDisc {
 	private float cost;
 	public String getTitle() {
 		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getCategory() {
 		return category;
