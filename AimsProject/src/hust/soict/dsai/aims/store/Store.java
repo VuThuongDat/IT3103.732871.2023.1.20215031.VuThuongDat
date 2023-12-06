@@ -1,6 +1,6 @@
 //Vu Thuong Dat 20215031
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 public class Store {
 	private DigitalVideoDisc itemStore[];
 	private int qtyItem;
