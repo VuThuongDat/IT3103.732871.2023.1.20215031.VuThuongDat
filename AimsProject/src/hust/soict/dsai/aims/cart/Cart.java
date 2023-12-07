@@ -1,120 +1,93 @@
 //Vu Thuong Dat 20215031
 package hust.soict.dsai.aims.cart;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	public DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-	public int qtyOrdered;
 	private static int nextId = 1;
-	public Cart() {
-		this.qtyOrdered = 0;
-	}
-//Kiem tra dieukien
-	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if (disc == null)
-			return;
-		if (qtyOrdered == MAX_NUMBERS_ORDERED) {
+	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	
+	public void addMedia(Media media) {
+		if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
 			System.out.println("Gio hang da day");
 			return;
 		}
-		for (int i = 0; i < qtyOrdered; i++) {
-			if (itemsOrdered[i].equals(disc)) {
-				System.out.println("Khong the them vi " + disc.getTitle() + " da co trong gio hang!!");
-				return;
-			}
-		}
-		disc.setId(nextId++);
-		itemsOrdered[qtyOrdered] = disc;
-		qtyOrdered++;
-		System.out.println("Them thanh cong " + disc.getTitle()+ " (ID: " + disc.getId() + ")");
-	}
-	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
-		for (DigitalVideoDisc disc : dvdList) {
-			addDigitalVideoDisc(disc);
-		}
-	}
-	
-	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		addDigitalVideoDisc(dvd1);
-		addDigitalVideoDisc(dvd2);
-	}
-//remove DVD
-	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-		if (disc == null)
+
+		if (itemsOrdered.contains(media)) {
+			System.out.println("Khong the them vi " + media.getTitle() + " da co trong gio hang!");
 			return;
-		if (qtyOrdered == 0) {
+		}
+
+		media.setId(nextId++);
+		itemsOrdered.add(media);
+		System.out.println("Them thanh cong: " + media.getTitle() + " (ID: " + media.getId() + ")");
+		return;
+	}
+	public void addMedia(Media... mediaList) {
+		for (Media media : mediaList) {
+			addMedia(media);
+		}
+	}
+	public void addMedia (Media media1, Media media2) {
+		addMedia(media1);
+		addMedia(media2);
+	}
+	public void removeMedia(Media media) {
+		if (itemsOrdered.isEmpty()) {
 			System.out.println("Gio hang trong");
 			return;
 		}
 
-		var found = false;
-		for (int i = 0; i < qtyOrdered; ++i) {
-			if (!found && itemsOrdered[i] == disc)
-				found = true;
-			if (found && i < qtyOrdered - 1) {
-				itemsOrdered[i] = itemsOrdered[i + 1];
-			} else if (found) {
-				itemsOrdered[i] = null;
-			}
-		}
-
-		if (!found)
-			System.out.println("Khong tim thay " + disc.getTitle());
-		else {
-			System.out.println("Da xoa "+ disc.getTitle());
-			qtyOrdered--;
-		}
-	}
-//total
-
-	public float totalCost() {
-		float sum = 0;
-		for (int i = 0; i < qtyOrdered; ++i) {
-			sum += itemsOrdered[i].getCost();
-		}
-		return sum;
-	}
-	
-	public void printCart() {
-		System.out.println("***********************CART***********************");
-		System.out.println("Ordered Items:");
-		if (qtyOrdered != 0) {
-			for (int i = 0; i < qtyOrdered; ++i) {
-				System.out.println((i + 1) + ". DVD " + itemsOrdered[i].toString());
-			}
+		if (itemsOrdered.contains(media)) {
+			itemsOrdered.remove(media);
+			System.out.println("Xoa thanh cong " + media.getTitle() + " (ID: " + media.getId() + ")");
 		} else {
-			System.out.println("");
+			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong gio hang");
 		}
-
-		System.out.println("Total cost: " + totalCost());
-		System.out.println("***************************************************");
 	}
 	
-	public void searchCart(int id){
-		int check = 0;
-		for(int i = 0; i < qtyOrdered; i++) {
-			if(itemsOrdered[i].isMatch(id)) {
-				check = 1;
-				System.out.println(itemsOrdered[i].toString());
-				break;
+	public float totalCost() {
+		float totalCost = 0f;
+		for (Media media : itemsOrdered) {
+			totalCost += media.getCost();
+		}
+		return totalCost;
+	}
+	
+	public void displayCart() {
+		if(itemsOrdered.size()!=0) {
+			for(Media media: itemsOrdered) {
+				media.printDetail();
 			}
 		}
-		if(check == 0) {
-			System.out.println("Khong tim thay '"+ id +"'");
+		else {
+			System.out.println("Gio hang trong!!!");
+			
+		}
+		
+		System.out.println("Tong tien : " + totalCost() + "\n\n");
+	}
+	
+	public void searchCart(int id) {
+		for (Media media : itemsOrdered) {
+			if (media.isMatch(id)) {
+				media.printDetail();
+				return;
+			}
+			System.out.println("Khong tim thay '" + id + "'");
+			return;
 		}
 	}
-	public void searchCart(String title){
-		int check = 0;
-		for(int i = 0; i < qtyOrdered; i++) {
-			if(itemsOrdered[i].isMatch(title)) {
-				check = 1;
-				System.out.println(itemsOrdered[i].toString());
-				break;
+
+	public void searchCart(String title) {
+		for (Media media : itemsOrdered) {
+			if (media.isMatch(title)) {
+				media.printDetail();
 			}
+			return;
 		}
-		if(check == 0) {
-			System.out.println("Khong tim thay '"+title+"'");
-		}
+		System.out.println("Khong tim thay '" + title + "'");
+		return;
 	}
 }
 

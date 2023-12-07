@@ -56,4 +56,7 @@ public abstract class Media {
 		}
 		return false;
 	}
+	public void printDetail() {
+		System.out.printf("ID: %d - %s - %s - %f $\n",this.id, this.title, this.category, this.cost);
+	}
 }

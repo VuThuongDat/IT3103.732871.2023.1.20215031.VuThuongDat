@@ -1,49 +1,73 @@
 //Vu Thuong Dat 20215031
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 public class Store {
-	private DigitalVideoDisc itemStore[];
-	private int qtyItem;
+	private ArrayList<Media> itemsInStore;
+	private int MAX_SIZE = 20 ;
+	private static int nextId = 1;
+	public Store() {
+        itemsInStore = new ArrayList<>(MAX_SIZE);
+    }
+	public void addMedia(Media media) {
+		if (itemsInStore.size() >= MAX_SIZE) {
+			System.out.println("Cua hang da day");
+			return;
+		}
 
-	public Store(int MAX_NUMBER_ITEM) {
-		itemStore = new DigitalVideoDisc[MAX_NUMBER_ITEM];
-		qtyItem = 0;
+		if (itemsInStore.contains(media)) {
+			System.out.println("Khong the them vi " + media.getTitle() + " da co trong cua hang!");
+			return;
+		}
+		media.setId(nextId++);
+		System.out.println("Them thanh cong: " + media.getTitle() + "vao cua hang!");
+		return;
 	}
+	public void removeMedia(Media media) {
+		if (itemsInStore.isEmpty()) {
+			System.out.println("Gio hang trong");
+			return;
+		}
 
-	public void addDVD(DigitalVideoDisc dvd) {
-		if (qtyItem < itemStore.length) {
-			itemStore[qtyItem] = dvd;
-			qtyItem++;
-			System.out.println("Them thanh cong " + dvd.getTitle());
+		if (itemsInStore.contains(media)) {
+			itemsInStore.remove(media);
+			System.out.println("Xoa thanh cong " + media.getTitle() + "khoi cua hang");
 		} else {
-			System.out.println("Khong the them " + dvd.getTitle() +"vi cua hang da day!!");
+			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong cua hang!");
 		}
 	}
-
-	public void removeDVD(DigitalVideoDisc dvd) {
-		boolean check = false; 
-		for (int i = 0; i < qtyItem; i++) {
-			if (itemStore[i].equals(dvd)) {
-				check = true;
-				for (int j = i; j < qtyItem - 1; j++) {
-					itemStore[j] = itemStore[j + 1];
-				}
-				qtyItem--;
-				System.out.println("Da xoa " + dvd.getTitle());
-				break;
+	public void DisplayStore() {
+        System.out.println("********** STORE **********");
+        if(itemsInStore.size()!=0) {
+        	for(Media media: itemsInStore) {
+    			media.printDetail();
+    		}
+    	}
+    		else {
+    			System.out.println("Cua hang trong!!!");
+        }
+        System.out.println("***************************");
+    }
+	public void searchStore(int id) {
+		for (Media media : itemsInStore) {
+			if (media.isMatch(id)) {
+				media.printDetail();
+				return;
 			}
-		}
-
-		if (!check) {
-			System.out.println("Khong tim thay " + dvd.getTitle());
+			System.out.println("Khong tim thay '" + id + "'");
+			return;
 		}
 	}
 
-	public void displayStore() {
-		System.out.println("********** STORE **********");
-		for (int i = 0; i < qtyItem; i++) {
-			System.out.println((i + 1) + ". " + itemStore[i].toString());
+	public void searchStore(String title) {
+		for (Media media : itemsInStore) {
+			if (media.isMatch(title)) {
+				media.printDetail();
+			}
+			return;
 		}
-		System.out.println("***************************");
+		System.out.println("Khong tim thay '" + title + "'");
+		return;
 	}
+	
 }
