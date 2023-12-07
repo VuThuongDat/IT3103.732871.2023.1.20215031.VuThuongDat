@@ -29,6 +29,9 @@ public abstract class Media {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
+	public Media() {
+		super();
+	}
 	public Media(String title){
 		super();
 		this.title = title;

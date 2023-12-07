@@ -1,5 +1,5 @@
+//Vu Thuong Dat 20215031
 package hust.soict.dsai.aims.media;
-
 public class Disc extends Media {
 	private String director;
 	private int length;
@@ -15,6 +15,9 @@ public class Disc extends Media {
 	public void setLength(int length) {
 		this.length = length;
 	}
+	public Disc() {
+        super(); 
+    }
 	public Disc(String title) {
 		super(title);
 	}
