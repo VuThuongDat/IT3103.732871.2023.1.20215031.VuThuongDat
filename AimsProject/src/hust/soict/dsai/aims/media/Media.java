@@ -14,20 +14,11 @@ public abstract class Media {
 	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
 	public float getCost() {
 		return cost;
-	}
-	public void setCost(float cost) {
-		this.cost = cost;
 	}
 	public Media() {
 		super();
@@ -41,9 +32,6 @@ public abstract class Media {
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
-	}
-	public boolean equals(DigitalVideoDisc disc) {
-		return this.getTitle().equals(disc.getTitle());
 	}
 	public boolean isMatch(int id) {
  		return this.id == id;
