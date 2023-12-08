@@ -20,7 +20,8 @@ public class Store {
 			return;
 		}
 		media.setId(nextId++);
-		System.out.println("Them thanh cong: " + media.getTitle() + "vao cua hang!");
+		itemsInStore.add(media);
+		System.out.println("Them thanh cong " + media.getTitle() + " vao cua hang!");
 		return;
 	}
 	public void removeMedia(Media media) {
@@ -31,16 +32,16 @@ public class Store {
 
 		if (itemsInStore.contains(media)) {
 			itemsInStore.remove(media);
-			System.out.println("Xoa thanh cong " + media.getTitle() + "khoi cua hang");
+			System.out.println("Xoa thanh cong " + media.getTitle() + " khoi cua hang!");
 		} else {
 			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong cua hang!");
 		}
 	}
-	public void DisplayStore() {
+	public void printStore() {
         System.out.println("********** STORE **********");
-        if(itemsInStore.size()!=0) {
+        if(!itemsInStore.isEmpty()) {
         	for(Media media: itemsInStore) {
-    			media.printDetail();
+        		System.out.println(media.toString());
     		}
     	}
     		else {
@@ -49,25 +50,26 @@ public class Store {
         System.out.println("***************************");
     }
 	public void searchStore(int id) {
+		boolean check = false;
 		for (Media media : itemsInStore) {
 			if (media.isMatch(id)) {
-				media.printDetail();
-				return;
+				System.out.println(media.toString());
+				check = true;
 			}
-			System.out.println("Khong tim thay '" + id + "'");
-			return;
 		}
+		if (!check) System.out.println("Khong tim thay '" + id + "'");
+
 	}
 
 	public void searchStore(String title) {
+		boolean check = false;
 		for (Media media : itemsInStore) {
 			if (media.isMatch(title)) {
-				media.printDetail();
+				System.out.println(media.toString());
+				check = true;
 			}
-			return;
 		}
-		System.out.println("Khong tim thay '" + title + "'");
+		if (!check) System.out.println("Khong tim thay '" + title + "'");
 		return;
 	}
-	
 }

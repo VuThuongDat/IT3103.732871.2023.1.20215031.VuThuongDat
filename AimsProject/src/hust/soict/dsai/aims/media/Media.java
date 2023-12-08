@@ -14,6 +14,9 @@ public abstract class Media {
 	public String getTitle() {
 		return title;
 	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getCategory() {
 		return category;
 	}
@@ -44,7 +47,13 @@ public abstract class Media {
 		}
 		return false;
 	}
-	public void printDetail() {
-		System.out.printf("ID: %d - %s - %s - %f $\n",this.id, this.title, this.category, this.cost);
+	public String toString() {
+		return String.format("ID: %d - %s - %s - %f $\n",this.id, this.title, this.category, this.cost);
+	}
+	
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Media))
+			return false;
+			return this.id == ((Media) obj).id;
 	}
 }

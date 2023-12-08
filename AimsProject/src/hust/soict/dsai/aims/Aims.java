@@ -38,8 +38,8 @@ public class Aims {
 		dvdList[0] = dvd1;
 		dvdList[1] = dvd2;
 		
-		anOrder.addDigitalVideoDisc(dvdList);
-		anOrder.addDigitalVideoDisc(dvd3, dvd4);
+		anOrder.addMedia(dvdList);
+		anOrder.addMedia(dvd3, dvd4);
 		System.out.println("Tong so tien phai tra la ");
 		System.out.println(anOrder.totalCost());
 	}

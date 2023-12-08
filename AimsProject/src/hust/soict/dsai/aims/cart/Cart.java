@@ -20,7 +20,7 @@ public class Cart {
 
 		media.setId(nextId++);
 		itemsOrdered.add(media);
-		System.out.println("Them thanh cong: " + media.getTitle() + " (ID: " + media.getId() + ")");
+		System.out.println("Them thanh cong " + media.getTitle() + " (ID: " + media.getId() + ") vao cua hang!");
 		return;
 	}
 	public void addMedia(Media... mediaList) {
@@ -40,9 +40,9 @@ public class Cart {
 
 		if (itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
-			System.out.println("Xoa thanh cong " + media.getTitle() + " (ID: " + media.getId() + ")");
+			System.out.println("Xoa thanh cong " + media.getTitle() + " (ID: " + media.getId() + ") khoi cua hang!");
 		} else {
-			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong gio hang");
+			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong gio hang!");
 		}
 	}
 	
@@ -54,39 +54,40 @@ public class Cart {
 		return totalCost;
 	}
 	
-	public void displayCart() {
-		if(itemsOrdered.size()!=0) {
-			for(Media media: itemsOrdered) {
-				media.printDetail();
+	public void printCart() {
+		System.out.println("***********************CART***********************");
+		if (!itemsOrdered.isEmpty()) {
+			for (Media media : itemsOrdered) {
+				System.out.println(media.toString());
 			}
+		} else {
+			System.out.println("Gio hang trong");
 		}
-		else {
-			System.out.println("Gio hang trong!!!");
-			
-		}
-		
-		System.out.println("Tong tien : " + totalCost() + "\n\n");
+		System.out.println("Tong tien: " +String.format("%.2f",totalCost()));
+		System.out.println("***************************************************");
 	}
 	
 	public void searchCart(int id) {
+		boolean check = false;
 		for (Media media : itemsOrdered) {
 			if (media.isMatch(id)) {
-				media.printDetail();
-				return;
+				System.out.println(media.toString());
+				check = true;
 			}
-			System.out.println("Khong tim thay '" + id + "'");
-			return;
 		}
+		if (!check) System.out.println("Khong tim thay '" + id + "'");
+
 	}
 
 	public void searchCart(String title) {
+		boolean check = false;
 		for (Media media : itemsOrdered) {
 			if (media.isMatch(title)) {
-				media.printDetail();
+				System.out.println(media.toString());
+				check = true;
 			}
-			return;
 		}
-		System.out.println("Khong tim thay '" + title + "'");
+		if (!check) System.out.println("Khong tim thay '" + title + "'");
 		return;
 	}
 }

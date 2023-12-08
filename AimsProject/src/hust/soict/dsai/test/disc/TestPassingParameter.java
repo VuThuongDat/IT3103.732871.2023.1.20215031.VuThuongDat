@@ -1,12 +1,12 @@
 //Vu Thuong Dat 20215031
 package hust.soict.dsai.test.disc;
-import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 public class TestPassingParameter {
 
 	public static void main(String[] args) {
-		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
-		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
+		Media jungleDVD = new DigitalVideoDisc("Jungle");
+		Media cinderellaDVD = new DigitalVideoDisc("Cinderella");
 		
 		swap(jungleDVD, cinderellaDVD);
 		System.out.println("Jungle dvd title: " + jungleDVD.getTitle() );
@@ -20,7 +20,7 @@ public class TestPassingParameter {
 		o1 = o2;
 		o2 = tmp;
 	}
-	public static void changeTitle(DigitalVideoDisc dvd, String title) {
+	public static void changeTitle(Media dvd, String title) {
 		String oldTitle = dvd.getTitle();
 		dvd.setTitle(title);
 		dvd = new DigitalVideoDisc(oldTitle);
