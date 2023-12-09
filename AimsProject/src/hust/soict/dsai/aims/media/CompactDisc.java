@@ -21,21 +21,21 @@ public class CompactDisc extends Disc implements Playable{
 
 	public void addTrack(Track track) {
 		if(tracks.contains(track)) {
-			System.out.println("Ban nhac " + this.getTitle() + " da co trong danh sach!");
+			System.out.println("Track " + this.getTitle() + " is already in the list!");
 		}
 		else {
 			tracks.add(track);
-			System.out.println("Them thanh cong " + this.getTitle() + " vao danh sach!");
+			System.out.println("Successfully added " + this.getTitle() + " to list!");
 		}
 	}
 	
 	public void removeTrack(Track track) {
 		if(tracks.contains(track)) {
 			tracks.remove(track);
-			System.out.println("Xoa thanh cong " + this.getTitle()+ " khoi danh sach!");
+			System.out.println("Successfully removed " + this.getTitle()+ " from the list!");
 		}
 		else {
-			System.out.println("Ban nhac"+ this.getTitle() +"khong co trong danh sach");
+			System.out.println("Track "+ this.getTitle() +" does not exist in the list");
 		}
 	}
 	public int getLength() {
@@ -50,7 +50,7 @@ public class CompactDisc extends Disc implements Playable{
 	    for (Track track : tracks) {
 	        result.append(track.getTitle()).append(". ");
 	    }
-	    result.append(String.format("- %s - %.2f $", getArtist(), getCost()));
+	    result.append(String.format("- %s - %d - %.2f $", getArtist(), getLength(),getCost()));
 	    return result.toString();
 	}
 	public void play() {

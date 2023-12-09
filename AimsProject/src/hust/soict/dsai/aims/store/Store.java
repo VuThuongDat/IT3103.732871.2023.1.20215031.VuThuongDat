@@ -11,65 +11,56 @@ public class Store {
     }
 	public void addMedia(Media media) {
 		if (itemsInStore.size() >= MAX_SIZE) {
-			System.out.println("Cua hang da day");
+			System.out.println("Store is full");
 			return;
 		}
 
 		if (itemsInStore.contains(media)) {
-			System.out.println("Khong the them vi " + media.getTitle() + " da co trong cua hang!");
+			System.out.println("Can't add because " + media.getTitle() + " is already in the store!");
 			return;
 		}
+
 		media.setId(nextId++);
 		itemsInStore.add(media);
-		System.out.println("Them thanh cong " + media.getTitle() + " vao cua hang!");
+		System.out.println("Successfully added " + media.getTitle() + " (ID: " + media.getId() + ") to store!");
 		return;
 	}
 	public void removeMedia(Media media) {
 		if (itemsInStore.isEmpty()) {
-			System.out.println("Gio hang trong");
+			System.out.println("Store is empty");
 			return;
 		}
 
 		if (itemsInStore.contains(media)) {
 			itemsInStore.remove(media);
-			System.out.println("Xoa thanh cong " + media.getTitle() + " khoi cua hang!");
+			System.out.println("Successfully removed " + media.getTitle() + " (ID: " + media.getId() + ") from the store!");
 		} else {
-			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong cua hang!");
+			System.out.println("Cannot remove because " + media.getTitle() + " does not exist in the store!");
 		}
 	}
 	public void printStore() {
         System.out.println("********** STORE **********");
         if(!itemsInStore.isEmpty()) {
         	for(Media media: itemsInStore) {
-        		System.out.println(media.toString());
+        		System.out.println(media.printMedia());
     		}
     	}
     		else {
-    			System.out.println("Cua hang trong!!!");
+    			System.out.println("Store is empty!");
         }
         System.out.println("***************************");
     }
-	public void searchStore(int id) {
-		boolean check = false;
+	public Media searchMedia(int id) {
 		for (Media media : itemsInStore) {
-			if (media.isMatch(id)) {
-				System.out.println(media.toString());
-				check = true;
-			}
+			if (media.isMatch(id)) System.out.println(media.printMedia());
 		}
-		if (!check) System.out.println("Khong tim thay '" + id + "'");
-
+		return null;
 	}
-
-	public void searchStore(String title) {
-		boolean check = false;
+	
+	public Media searchMedia(String title) {
 		for (Media media : itemsInStore) {
-			if (media.isMatch(title)) {
-				System.out.println(media.toString());
-				check = true;
-			}
+			if (media.isMatch(title)) return media;
 		}
-		if (!check) System.out.println("Khong tim thay '" + title + "'");
-		return;
+		return null;
 	}
 }

@@ -20,8 +20,6 @@ public class StoreTest {
 		authors= new ArrayList<>();
 		authors.add("Antoine de Saint-Exupéry");
 		Media media2 = new Book("The little prince","Animation",authors, 18.15f);
-		authors= new ArrayList<>();
-		authors.add("Antoine de Saint-Exupéry");
 		tracks = new ArrayList<>();
 		tracks.add(new Track("I do", 5));
 		tracks.add(new Track("The night", 3));
@@ -38,8 +36,6 @@ public class StoreTest {
 		anOrder.printStore();
 		anOrder.removeMedia(media2);
 		anOrder.printStore();
-		anOrder.searchStore(2);
-		anOrder.searchStore("M");
 	}
 	
 }

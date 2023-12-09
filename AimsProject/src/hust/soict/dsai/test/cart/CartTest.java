@@ -8,6 +8,7 @@ import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Track;
+
 public class CartTest {
 	private static List<Track> tracks;
 	private static List<String> authors;
@@ -15,13 +16,10 @@ public class CartTest {
 		Cart anOrder = new Cart();
 		
 		Media[] mediaList = new Media[3];
-
 		Media media1 = new DigitalVideoDisc("The Lion King", "Animation", "John Director", 87,  19.95f);
 		authors= new ArrayList<>();
 		authors.add("Antoine de Saint-Exupéry");
 		Media media2 = new Book("The little prince","Animation",authors, 18.15f);
-		authors= new ArrayList<>();
-		authors.add("Antoine de Saint-Exupéry");
 		tracks = new ArrayList<>();
 		tracks.add(new Track("I do", 5));
 		tracks.add(new Track("The night", 3));
@@ -36,11 +34,13 @@ public class CartTest {
 		for (Media media : mediaList) {
 			System.out.println(media.toString());
 		}
+		
+		anOrder.printCart();
+		anOrder.sortCartByCost();
+		System.out.println("Sorted cart by cost");
 		anOrder.printCart();
 		anOrder.removeMedia(media2);
 		anOrder.printCart();
-		anOrder.searchCart(2);
-		anOrder.searchCart("M");
 	}
 	
 }

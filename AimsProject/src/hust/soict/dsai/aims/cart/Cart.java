@@ -2,25 +2,25 @@
 package hust.soict.dsai.aims.cart;
 import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
+import java.util.Collections;
+import hust.soict.dsai.aims.media.MediaComparatorByCostTitle;
+import hust.soict.dsai.aims.media.MediaComparatorByTitleCost;
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private static int nextId = 1;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	
 	public void addMedia(Media media) {
 		if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
-			System.out.println("Gio hang da day");
+			System.out.println("Cart is full");
 			return;
 		}
 
 		if (itemsOrdered.contains(media)) {
-			System.out.println("Khong the them vi " + media.getTitle() + " da co trong gio hang!");
+			System.out.println("Can't add because " + media.getTitle() + " is already in the cart!");
 			return;
 		}
-
-		media.setId(nextId++);
 		itemsOrdered.add(media);
-		System.out.println("Them thanh cong " + media.getTitle() + " (ID: " + media.getId() + ") vao cua hang!");
+		System.out.println("Successfully added " + media.getTitle() + " (ID: " + media.getId() + ") to cart!");
 		return;
 	}
 	public void addMedia(Media... mediaList) {
@@ -34,18 +34,21 @@ public class Cart {
 	}
 	public void removeMedia(Media media) {
 		if (itemsOrdered.isEmpty()) {
-			System.out.println("Gio hang trong");
+			System.out.println("Cart is empty");
 			return;
 		}
 
 		if (itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
-			System.out.println("Xoa thanh cong " + media.getTitle() + " (ID: " + media.getId() + ") khoi cua hang!");
+			System.out.println("Successfully removed " + media.getTitle() + " (ID: " + media.getId() + ") from the store!");
 		} else {
-			System.out.println("Khong the xoa vi " + media.getTitle() + " khong co trong gio hang!");
+			System.out.println("Cannot remove because " + media.getTitle() + " does not exist in the cart!");
 		}
 	}
 	
+	public void removeMedia() {
+			itemsOrdered.clear();
+	}
 	public float totalCost() {
 		float totalCost = 0f;
 		for (Media media : itemsOrdered) {
@@ -58,38 +61,36 @@ public class Cart {
 		System.out.println("***********************CART***********************");
 		if (!itemsOrdered.isEmpty()) {
 			for (Media media : itemsOrdered) {
-				System.out.println(media.toString());
+				System.out.println(media.printMedia());
 			}
 		} else {
-			System.out.println("Gio hang trong");
+			System.out.println("Cart is empty!");
 		}
-		System.out.println("Tong tien: " +String.format("%.2f",totalCost()));
+		System.out.println("Total cost: " +String.format("%.2f",totalCost()) + " $");
 		System.out.println("***************************************************");
 	}
 	
-	public void searchCart(int id) {
-		boolean check = false;
+	public Media searchMedia(int id) {
 		for (Media media : itemsOrdered) {
-			if (media.isMatch(id)) {
-				System.out.println(media.toString());
-				check = true;
-			}
+			if (media.isMatch(id)) return media;
 		}
-		if (!check) System.out.println("Khong tim thay '" + id + "'");
-
+		return null;
 	}
-
-	public void searchCart(String title) {
-		boolean check = false;
+	
+	public Media searchMedia(String title) {
 		for (Media media : itemsOrdered) {
-			if (media.isMatch(title)) {
-				System.out.println(media.toString());
-				check = true;
-			}
+			if (media.isMatch(title)) return media;
 		}
-		if (!check) System.out.println("Khong tim thay '" + title + "'");
-		return;
+		return null;
 	}
+	
+	public void sortCartByTitle() {
+		Collections.sort(itemsOrdered, new MediaComparatorByTitleCost());
+	}
+	
+	public void sortCartByCost() {
+		Collections.sort(itemsOrdered, new MediaComparatorByCostTitle());
+	}	
 }
 
 	

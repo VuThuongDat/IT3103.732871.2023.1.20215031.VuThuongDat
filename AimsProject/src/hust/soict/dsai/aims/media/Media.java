@@ -1,10 +1,13 @@
 //Vu Thuong Dat 20215031
 package hust.soict.dsai.aims.media;
+import java.util.Comparator;
 public abstract class Media {
 	private int id;
 	private String title;
 	private String category;
 	private float cost;
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 	public int getId() {
 		return id;
 	}
@@ -47,8 +50,9 @@ public abstract class Media {
 		}
 		return false;
 	}
-	public String toString() {
-		return String.format("ID: %d - %s - %s - %f $\n",this.id, this.title, this.category, this.cost);
+	public void play(){}
+	public String printMedia() {
+		return String.format("ID: %d - %s - %s - %.2f $\n",this.id, this.title, this.category, this.cost);
 	}
 	
 	public boolean equals(Object obj) {

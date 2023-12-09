@@ -10,20 +10,20 @@ public class Book extends Media{
 	}
 	public void addAuthor(String authorname) {
 		if(authors.contains(authorname)){
-			System.out.println("Tac gia " + authorname +" da co trong danh sach!");
+			System.out.println("Author " + authorname +" is already in the list!");
 		}
 		else {
 			authors.add(authorname);
-			System.out.println("Them thanh cong " + authorname+ " vao danh sach!");
+			System.out.println("Successfully added " + authorname+ " to list!");
 		}
 	}
 	 public void removeAuthor(String authorname) {
 			if(authors.contains(authorname)) {
 				authors.remove(authorname);
-				System.out.println("Xoa thanh cong " + authorname+" khoi danh sach!" );
+				System.out.println("Successfully removed " + authorname+" from the list!" );
 			}
 			else {
-				System.out.println("Tac gia " + authorname +" khong co trong danh sach!");
+				System.out.println("Author " + authorname +" does not exist in the list!");
 			}
 	 }
 	 public String toString() {
